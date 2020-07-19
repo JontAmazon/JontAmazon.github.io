@@ -1,16 +1,8 @@
 ---
 theme: jekyll-theme-cayman
-title: Jonatan Lindholms website (TODO apostr)
-description:
-apo0 ' ''' '
-apo1 '\''
-apo2 " \' "   
-
-
-
-BAD - apo1 '' "'" apo2 "\'" apo3 \' apo2 \''
+title: 'Jonatan Lindholm''s website'
+# description:
 ---
-
 
 
 
