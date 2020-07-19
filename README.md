@@ -1,72 +1,35 @@
 ### TODO
-- fixa länkar för alla items i Contents
-- 
-
+-
+-
+-
 
 
 ### Contents
+
+[AccelerationBall](https://jontamazon.github.io/AccelerationBall)
 
 
 
 
 ### About me
 
-My name is Jonatan. That is all you need to know.
+My name is Jonatan, born in 1995. In 2020 I graduated from Lund
+University with a degree in Engineering Physics.
 
-...
-
-...
-
-...
-
-...
-
-...
-
-...
-
-...
+Currently, during the summer of 2020, I''''m enjoying life, getting
+into shape and pursuing some smaller projects while planning my future,
+such as where I would like to work as a graduate.
 
 
-### Markdown
 
-(Se hela instruktioner på: /blog).
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-```markdown
-Syntax highlighted code block block block block
 
-# Header 1
-## Header 2
-### Header 3 block block block block block
 
-- Bulleted
-- List
 
-1. Numbered
-2. List
+### AccelerationBall temp figure
 
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-### Markdown in action
-
-# Header 1
-
-## Header 2
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](https://jontamazon.github.io/blog) and ![Image](accelerationball.png)
+![Image](accelerationball.png)
 
 
 
