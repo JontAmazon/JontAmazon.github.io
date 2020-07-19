@@ -1,31 +1,3 @@
-### Contents (TODO = links for each)
-
-
-
-
-### About me
-
-My name is Jonatan. That is all you need to know.
-
-
-...
-
-...
-
-...
-
-
-
-
-
-
-
-
-
-
-
-
-
 ### Markdown
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
