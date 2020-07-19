@@ -4,7 +4,7 @@
 
 To perform such a guess, all detections sampled by the radar are first clustered (grouped together) based on the detections' spatial coordinates. Different clusters are assumed to comprise distinct objects. By observing the size of an object, radial velocity, and how it moves in time, the class of the object is guessed, for example 'human', 'car' or 'animal'.
 
-With this thesis we aim to improve upon the clustering. In the original pipeline, clustering is performed considering only the detections' spatial coordinates, $x$ and $y$. By first guessing the class of every detection in the monitored scene, however, it should be possible to cluster the detections more accurately. If a blob of detections expresses characteristics associated with a rabbit, for example, we can expect a small cluster, and if they seem to belong to a bus, we can expect a larger cluster. This will help the clustering.
+With this thesis we aim to improve upon the clustering. In the original pipeline, clustering is performed considering only the detections' spatial coordinates, x and y. By first guessing the class of every detection in the monitored scene, however, it should be possible to cluster the detections more accurately. If a blob of detections expresses characteristics associated with a rabbit, for example, we can expect a small cluster, and if they seem to belong to a bus, we can expect a larger cluster. This will help the clustering.
 
 To guess the class of each detection, we use deep neural networks that learn from the data we feed them.
 Our networks are just like children that learn how to color objects. If we say that cucumbers are green, they will color cucumbers green. If we say that cucumbers can be both green and red, they will believe us and color new cucumbers with a mixture of both green and red. Thus, it is important to give the networks correct training data, or they will be confused.
@@ -17,7 +17,7 @@ The results are promising, and on par with the original pipeline, both for clust
 
 Our hope is that classification could also be performed faster than the original pipeline. So if a human enters a scene, it can be labeled as a human more quickly, decreasing the probability of it leaving the scene before being classified. This would be very beneficial to the end user, in the context of surveillance.
 
-### Example of a scene with 4 objects
+### Example of a scene with 4 objects. The radar is positioned at the origin.
 
 ![Image](semseg_gt.png)
 
