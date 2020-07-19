@@ -17,7 +17,7 @@ The results are promising, and on par with the original pipeline, both for clust
 
 Our hope is that classification could also be performed faster than the original pipeline. So if a human enters a scene, it can be labeled as a human more quickly, decreasing the probability of it leaving the scene before being classified. This would be very beneficial to the end user, in the context of surveillance.
 
-### Example of a scene with 4 objects. The radar is positioned at the origin.
+### Example of a scene with 4 objects. The radar is positioned at the origin, pointing to the right.
 
 ![Image](images/semseg_gt.png)
 
