@@ -19,6 +19,6 @@ Our hope is that classification could also be performed faster than the original
 
 ### Example of a scene with 4 objects. The radar is positioned at the origin.
 
-![Image](semseg_gt.png)
+![Image](images/semseg_gt.png)
 
 
