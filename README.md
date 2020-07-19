@@ -1,7 +1,8 @@
 ### Contents
 
-[AccelerationBall](https://jontamazon.github.io/AccelerationBall)
+[Master's thesis popular summary](https://jontamazon.github.io/MastersThesis)
 
+[AccelerationBall](https://jontamazon.github.io/AccelerationBall)
 
 
 
