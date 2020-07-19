@@ -1,10 +1,14 @@
 ---
 layout: page
-theme: jekyll-theme-cayman
+#theme: jekyll-theme-cayman
 #theme: minima
+theme: slate
 tititle: 'Jonatan Lindholm''s website'
 # description:
 ---
+
+
+
 
 
 
