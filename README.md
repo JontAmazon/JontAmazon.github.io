@@ -8,8 +8,9 @@
 
 ### About me
 
-My name is Jonatan, born in 1995. In 2020 I graduated from Lund
-University with a degree in Engineering Physics.
+My name is Jonatan, I was born in 1995 and grew up in Stockholm.
+At 20 years old I moved to study at Lund University and in 2020
+I graduated with a degree in Engineering Physics.
 
 Currently, during the summer of 2020, I'm enjoying life, getting
 into shape and pursuing some smaller projects while planning my future,
