@@ -1,4 +1,10 @@
-### Contents (TODO = links for each)
+### TOTO
+- fixa länkar för alla items i Contents
+- 
+
+
+
+### Contents
 
 
 
@@ -14,19 +20,18 @@ My name is Jonatan. That is all you need to know.
 
 ...
 
+...
 
+...
 
+...
 
-
-
-
-
-
-
-
+...
 
 
 ### Markdown
+
+(Se hela instruktioner på: /blog).
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
@@ -36,14 +41,6 @@ Syntax highlighted code block block block block
 # Header 1
 ## Header 2
 ### Header 3 block block block block block
-
-test 3...
-
-
-
-test 3...
-
-
 
 - Bulleted
 - List
@@ -56,12 +53,21 @@ test 3...
 [Link](url) and ![Image](src)
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+### Markdown in action
 
-### Jekyll Themes
+# Header 1
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/JontAmazon/github_page/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+## Header 2
 
-### Support or Contact
+- Bulleted
+- List
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+1. Numbered
+2. List
+
+**Bold** and _Italic_ and `Code` text
+
+[Link](https://jontamazon.github.io/blog) and ![Image](accelerationball.png)
+
+
+
