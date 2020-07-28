@@ -1,6 +1,5 @@
 <style>
 body {
-  background-color: lightblue;
   background: rgba(0, 128, 0, 0.3) /* Green background with 30% opacity */
 }
 </style>
