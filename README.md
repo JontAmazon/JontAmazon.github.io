@@ -1,7 +1,6 @@
 <style>
 body {
   background-color: lightblue;
-  opacity: 0.25;
 }
 </style>
 
