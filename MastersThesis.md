@@ -11,7 +11,7 @@ body {
 
 To perform such a guess, or __classification__, all detections sampled by the radar are first clustered (grouped together) based on the detections' spatial coordinates. Different clusters are assumed to comprise distinct objects. By observing the size of an object, radial velocity, and tracking how it moves in time, the class of the object is guessed, for example 'human', 'car' or 'rabbit'.
 
-![Image](images/pipeline.png)
+![Image](images/pipeline_green.png)
 
 With this thesis we aim to improve upon the clustering step. In the original pipeline, clustering is performed considering only the detections' spatial coordinates, x and y. By first guessing the class of every detection in the monitored scene, however, it should be possible to cluster the detections more accurately.
 
