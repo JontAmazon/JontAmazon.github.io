@@ -1,3 +1,8 @@
+body {
+  background-color: lightblue;
+}
+
+
 ### Contents
 
 [Master's thesis popular summary](https://jontamazon.github.io/MastersThesis)
@@ -18,9 +23,6 @@ such as where I would like to work as a graduate.
 
 
 
-body {
-  background-color: lightblue;
-}
 
 
 
