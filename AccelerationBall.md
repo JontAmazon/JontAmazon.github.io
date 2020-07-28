@@ -1,3 +1,10 @@
+<style>
+body {
+  background: rgba(0, 128, 0, 0.20) /* Green background with 30% opacity */
+}
+</style>
+
+
 ### AccelerationBall
 
 Just like real life, this game is about collecting apples and avoiding scary monsters.

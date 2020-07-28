@@ -1,3 +1,10 @@
+<style>
+body {
+  background: rgba(0, 128, 0, 0.20) /* Green background with 30% opacity */
+}
+</style>
+
+
 ### Clustering and Classifying Radar Data using Deep Learning
 
 **In the context of surveillance, intelligent radars can guess what a blob of radar detections encompasses. It may be unnecessary to call the guards if a rabbit enters the monitored area, but if a person or a vehicle does so, measures may be required.**
