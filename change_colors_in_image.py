@@ -1,3 +1,22 @@
+### NOTES TO SELF
+"""
+    Scriptet går absolut att köra. Testa.
+    
+    Men jag har lite problem med att, om jag i plt figuren klickar save, 
+    så minskas storleken typ.
+    
+    Det går säkert att fixa, men jag bangar på att göra det nu :)
+"""
+
+
+
+
+
+
+
+
+
+
 # import the necessary packages
 import numpy as np
 import scipy.spatial as sp
@@ -24,13 +43,15 @@ for py in range(0,h):
           image[py][px][1]=green[1]
           image[py][px][2]=green[2]
 
+
+
 # show image
-plt.figure()
+plt.figure(figsize=(w, h))
 plt.axis("off")
 plt.imshow(image)
 
-
-
+# save figure
+# plt.savefig(f'images/semseg_gt_green.png',format='png',bbox_inches='tight',dpi=230)
 
 
 
