@@ -1,6 +1,6 @@
 <style>
 body {
-  background: rgba(0, 128, 0, 0.20) /* Green background with 30% opacity */
+  background: rgba(0, 128, 0, 0.28) /* Green background with 30% opacity */
 }
 </style>
 
