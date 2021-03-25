@@ -15,20 +15,19 @@ body {
 ### About me
 
 My name is Jonatan, I was born in 1995 and grew up in Stockholm.
-In 2015 I moved to study at Lund University, and in 2020
-I graduated with a degree in Engineering Physics.
-
-Currently (summer of 2020), I'm enjoying life, getting
-into shape and pursuing some smaller projects while planning my future,
-such as where I would like to work as a graduate.
-
-
+In 2015 I moved to study at Lund University and in the summer of 2020
+I graduated with a master's degree in Engineering Physics. I studied German full time until March, and now want to start working.
 
 
 
 
 
 <!--
+Currently (summer of 2020), I'm enjoying life, getting
+into shape and pursuing some smaller projects while planning my future,
+such as where I would like to work as a graduate.
+
+
 ### CSS - BACKGROUNDS
 ### https://www.w3schools.com/css/css_background.asp
 
