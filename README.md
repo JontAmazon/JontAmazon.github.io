@@ -14,68 +14,35 @@ body {
 
 ### About me
 
-My name is Jonatan, I was born in 1995 and grew up in Stockholm.
-In 2015 I moved to study at Lund University and in the summer of 2020
-I graduated with a master's degree in Engineering Physics. I studied German full time until March, and now want to start working.
+My name is Jonatan, I was born in 1995 and grew up in Stockholm. Between 2015-2020 I studied Engineering Physics at Lund University.
 
+In September 2020 I started studying German and in May 2021 I obtained a B2 German certificate from the Goethe Institute.
 
+Next, I would like to start working.
 
 
 
 <!--
-Currently (summer of 2020), I'm enjoying life, getting
-into shape and pursuing some smaller projects while planning my future,
-such as where I would like to work as a graduate.
+He was traveling from Chicago
+to Joliet, he said, on the expressway,
+Old State Highway 59, when a
+semi rollover caused a load of potatoes
+to scatter across the road.
 
+People stopped, pulled their
+pickups and jeeps, their Chevy vans
+and VW bugs off to the shoulder,
+got out and dashed across three lanes
+of traffic after Idaho russets and
+Yukon Golds, reds and whites and yams.
 
-### CSS - BACKGROUNDS
-### https://www.w3schools.com/css/css_background.asp
-
-
-You can set the background color for any HTML elements:
-Here, the <h1>, <p>, and <div> elements will have different background colors:
-h1 {
-  background-color: green;
-}
-
-div {
-  background-color: lightblue;
-}
-
-p {
-  background-color: yellow;
-}
-
-
-BACKGROUND IMAGE
-- image repeat, horisontally &/ vertically
-- background attachment
-  ("The background-attachment property specifies whether the background image should scroll or be fixed (will not scroll with the rest of the page)"
-
-
-OPACITY
-
-
-### CSS - BORDERS
-### https://www.w3schools.com/css/css_border.asp
-
-
-The CSS border properties allow you to specify the style, width, and color of an element's border.
-
-
-Set the property border-style:
-p.dotted {border-style: dotted;}
-p.dashed {border-style: dashed;}
-
-
-BORDER WIDTH
-BORDER COLOR
-BORDER SIDES
-ROUNDED BORDERS
-BORDER MARGINS
-
-
-### CSS - PADDING
-### ...
+I’d have understood if it were
+a Brinks truck with flyaway tens
+and twenties. But potatoes?
+Perhaps it was the fact of
+sudden bounty dropping down
+in front of you, and like unexpected
+grace, you must be grateful,
+whatever it is that is given.
 -->
 

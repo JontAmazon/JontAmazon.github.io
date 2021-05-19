@@ -7,7 +7,7 @@ body {
 
 ### Goethe Institute - B2 German Certificate
 
-![Image](images/GoetheB2-page-001.pdf)
+![Image](images/GoetheB2-page-001.jpg)
 
-![Image](images/GoetheB2-page-002.pdf)
+![Image](images/GoetheB2-page-002.jpg)
 
