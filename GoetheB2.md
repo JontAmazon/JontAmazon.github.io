@@ -7,6 +7,7 @@ body {
 
 ### Goethe Institute - B2 German Certificate
 
-![Image](images/GoetheB2.pdf) <!-- jpg should be fine, right? -->
+![Image](images/GoetheB2-page-001.pdf)
 
+![Image](images/GoetheB2-page-002.pdf)
 

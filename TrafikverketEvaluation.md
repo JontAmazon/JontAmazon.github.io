@@ -7,6 +7,6 @@ body {
 
 ### Trafikverket Betyg
 
-![Image](images/Betyg_Trafikverket.jpg) <!-- jpg should be fine, right? -->
+![Image](images/Betyg_Trafikverket.jpg)
 
 
