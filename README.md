@@ -18,6 +18,9 @@ My name is Jonatan, I was born in 1995 and grew up in Stockholm. Between 2015-20
 In September 2020 I started studying German and in May 2021 I obtained a B2 German certificate from the Goethe Institute. \
 Next, I would like to start working.
 
+![Image](images/selfie_reading_in_the_north.jpg)
+
+
 
 
 <!--
