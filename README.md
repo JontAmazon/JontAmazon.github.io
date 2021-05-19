@@ -4,7 +4,7 @@ body {
 }
 </style>
 
-### Contents
+### Content
 
 [Master's thesis popular summary](https://jontamazon.github.io/MastersThesis)
 
