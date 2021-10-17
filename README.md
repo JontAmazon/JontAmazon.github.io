@@ -15,7 +15,7 @@ body {
 ### About me
 
 My name is Jonatan, I was born in 1995 and grew up in Stockholm. Between 2015-2020 I studied Engineering Physics at Lund University. \
-In September 2020 I started learning German and in May 2021 I obtained a B2 German certificate from the Goethe Institute. \
+In September 2020 I started learning German. In May 2021 I obtained a B2-level German certificate from the Goethe Institute. \
 Between September and December 2021 I am doing an internship in software development at the German Aerospace Center in Cologne. \
 Next, I would like to work with programming in Spain, a German speaking country, or Sweden.
 
