@@ -7,4 +7,6 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+  site: 'https://jontamazon.github.io',
+  // base: 'my-repo' // JontAmazon.github.io?
 });
