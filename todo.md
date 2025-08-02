@@ -1,5 +1,4 @@
 # Prio 1
-- make the "01" disappear on project 1 disappear, etc.
 - increase size of LinkedIn and GitHub icons? Consider adding them to the Header.
 - Hero page: try adding an image of myself
   - I dont like how the "Hero" page looks now. Hm...
