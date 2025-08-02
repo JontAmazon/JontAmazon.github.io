@@ -37,12 +37,11 @@
 
 
 
-
-
-
-
-
-
+# Later consider - GitHub Actions for automated builds:
+https://docs.astro.build/en/guides/deploy/github/ -> "Configure a GitHub Actions"
+- note if I do this: I should do:
+  1. git rm dist/
+  2. re-add dist/ to .gitignore
 
 
 
