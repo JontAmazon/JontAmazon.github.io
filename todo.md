@@ -1,5 +1,4 @@
 # Prio 1
-- increase size of LinkedIn and GitHub icons? Consider adding them to the Header.
 - Hero page: try adding an image of myself
   - I dont like how the "Hero" page looks now. Hm...
   - I COULD remove it alltogether and replace it with one that I make.
