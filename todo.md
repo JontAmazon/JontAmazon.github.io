@@ -1,58 +1,21 @@
 # Prio 1
-- migrate!
-- did migration fix project links?
-
-
-
-
+- make the "01" disappear on project 1 disappear, etc.
+- increase size of LinkedIn and GitHub icons? Consider adding them to the Header.
+- Hero page: try adding an image of myself
+  - I dont like how the "Hero" page looks now. Hm...
+  - I COULD remove it alltogether and replace it with one that I make.
+- make APPLE DASH look nicer.
 
 # Prio 2
-- should I keep favicon?
 - recruiters might not click my links. So what can I do to make it look impressive without them doing that?
-  - consider making it look more like https://dunks1980.com/
-  - for Apple Dash, consider including a small image of the 
-  - for Acceleration Ball, consider... hm... idk.
-- dev tools: any errors?
-- I dont like how the "Hero" page looks.
-  - image of myself?
-  - increase size of LinkedIn and GitHub icons? Consider adding them to the Header.
+  - MAYBE I can re-organize it and make it look like https://dunks1980.com/
+  - use modals?
+    - (masters thesis and acceleration ball)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Later consider - GitHub Actions for automated builds:
-https://docs.astro.build/en/guides/deploy/github/ -> "Configure a GitHub Actions"
-- note if I do this: I should do:
-  1. git rm dist/
-  2. re-add dist/ to .gitignore
-
-
-
-# Later consider
+# Prio 3
 - possible to lazy-load "Jonatan Lindholm", one letter after another?
-- use modals?
-  - instead of /subpages, I could use modals for master's thesis and acceleration ball! Much nicer UX. Inspired by https://dunks1980.com/
-- re-order projects? : Acceleration Ball - Apple Dash - Playwright Practice - Master's Thesis
-- different background color?
 
-# LATER consider:
+# LATER consider (a lot of work):
 - consider:
     - add "University Projects/Specialization":
     - intro = text about what courses/topics I found most interesting.
@@ -75,7 +38,8 @@ https://docs.astro.build/en/guides/deploy/github/ -> "Configure a GitHub Actions
   (if I do this, also consider adding that to my cover letter.)
 
 
-
+# EV:
+- different background color?
 
 # EVEV:
 - Header: instead of "About" and "Projects", I could have "Home", and I could make the whole Header clickable? But in this case, maybe I cannot have h1 text in the Header zone, which I currently have.
