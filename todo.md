@@ -1,6 +1,4 @@
 # Prio 1
-- make APPLE DASH look nicer.
-- add Portfolio to CV
 
 # Consider adding "University Projects":
 - intro = text about what courses/topics I found most interesting.
@@ -14,7 +12,6 @@
     - (Ice and Snow (albedo))
 
 # EV:
-- different background color?
 
 
 
@@ -22,10 +19,12 @@
 
 
 # EVEV:
-- Header: instead of "About" and "Projects", I could have "Home", and I could make the whole Header clickable? But in this case, maybe I cannot have h1 text in the Header zone, which I currently have.
+- different background color?
+- make APPLE DASH look nicer?
+- possible to lazy-load "Jonatan Lindholm", one letter after another?
 
 
-
+# GOLDPLATING:
 
 
 
@@ -39,7 +38,7 @@
 
 
 # NJA:
-- possible to lazy-load "Jonatan Lindholm", one letter after another?
+- Header: instead of "About" and "Projects", I could have "Home", and I could make the whole Header clickable? But in this case, maybe I cannot have h1 text in the Header zone, which I currently have.
 - recruiters might not click my links. So what can I do to make it look impressive without them doing that?
   - MAYBE I can re-organize it and make it look like https://dunks1980.com/, i.e. a 2x2 grid with one project per cell. Each project has an image that fades. Zoom in on image on hover.
   - use modals? Applicable to masters-thesis and acceleration-ball.

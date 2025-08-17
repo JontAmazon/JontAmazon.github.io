@@ -20,18 +20,25 @@ export const siteConfig = {
   skills: [],
   projects: [
     {
+      name: "WhatsApp Weather Bot",
+      description:
+      "A WhatsApp weather bot that sends daily weather updates using Twilio.",
+      link: "https://weather-whatsapp-bot.fly.dev/",
+      skills: ["Python", "Docker", "Fly.io", "REST API", "Database", "GH Actions", "Scheduling"],
+    },
+    {
       name: "Acceleration Ball",
       description:
       "A fast-paced 2D game where you collect apples while avoiding monsters and emerging magma.",
       link: "/acceleration-ball",
-      skills: ["Java"],
+      skills: ["Java", "OOP", "Game Loop & Animation"],
     },
     {
       name: "Apple Dash",
       description:
-      "Simple web game with a Node.js backend and SQLite database.",
+      "Simple web game with a Node.js backend and SQLite highscore database.",
       link: "https://apple-dash.fly.dev/",
-      skills: ["JavaScript", "Node.js", "Express.js", "SQLite"],
+      skills: ["JavaScript", "Node.js", "Express", "REST API", "Database"],
     },
     {
       name: "Playwright Practice",
