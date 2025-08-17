@@ -34,18 +34,18 @@ export const siteConfig = {
       skills: ["Java", "OOP", "Game Loop & Animation"],
     },
     {
-      name: "Apple Dash",
-      description:
-      "Simple web game with a Node.js backend and SQLite highscore database.",
-      link: "https://apple-dash.fly.dev/",
-      skills: ["JavaScript", "Node.js", "Express", "REST API", "Database"],
-    },
-    {
       name: "Playwright Practice",
       description:
       "GitHub repo for practicing Playwright end-to-end UI testing on a virtual bank demo site.",
       link: "https://github.com/JontAmazon/playwright-practice",
       skills: ["JavaScript", "Playwright", "Automated Web Testing"],
+    },
+    {
+      name: "Apple Dash",
+      description:
+      "Simple web game with a Node.js backend and SQLite highscore database.",
+      link: "https://apple-dash.fly.dev/",
+      skills: ["JavaScript", "Node.js", "Express", "REST API", "Database"],
     },
     {
       name: "Master's Thesis Popular Summary",
