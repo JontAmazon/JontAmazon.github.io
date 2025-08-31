@@ -41,6 +41,12 @@ export const siteConfig = {
       skills: ["JavaScript", "Playwright", "Automated Web Testing"],
     },
     {
+      name: "Yatzy Simulation",
+      description: "Heuristic-based algorithm for playing Yatzy.",
+      link: "https://yatzy-solver.fly.dev/",
+      skills: ["Python"],
+    },
+    {
       name: "Apple Dash",
       description:
       "Simple web game with a Node.js backend and SQLite highscore database.",
