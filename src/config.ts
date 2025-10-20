@@ -24,16 +24,53 @@ export const siteConfig = {
   ],
   projects_2025: [
     {
+      name: "Full Stack To-Do App (WIP)",
+      description:
+      "A desktop browser to-do/note editor built with Next.js, " +
+      "featuring JWT client-side authentication and a managed PostgreSQL database." +
+      "\nDesigned to be a personal productivity tool and full-stack learning project." +
+      "\nExtra focus on testing (unit, api, e2e) with Vitest and Playwright, and CI/CD.",
+      /*
+      --- More features planned ---
+      - fine-tuned editor:
+        - automatic (??) UI for verbose tasks (collapsible text blocks)
+        - several text formatting options
+        - "- " creates a new list item?
+      - history 
+      - auto-save
+      - keyboard shortcuts for power users:
+        - collapse/expand note, etc.
+      
+        --- EV add background ---
+      - I found that other note apps missed collapsible features.
+        - (maybe note app X also has this)
+
+      */
+      // link: "",
+      skills: [
+        "TypeScript", 
+        "Next.js", 
+        "Auth", // "Authentication (NextAuth)", 
+        "PostgreSQL", // Neon - managed DB
+        "React", 
+        "Playwright",
+        // "CI/CD",
+        // PostgreSQL (Prisma ORM)
+        // "Fly.io"
+        // "Tailwind CSS", 
+      ],
+    },
+    {
       name: "WhatsApp Weather Bot",
       description:
-      "A WhatsApp weather bot that sends daily weather updates using Twilio.",
+      "A WhatsApp weather bot that sends daily weather updates to all subscribers.",
       link: "https://weather-whatsapp-bot.fly.dev/",
-      skills: ["Python", "Docker", "Fly.io", "REST API", "Database", "GH Actions", "Scheduling"],
+      skills: ["Python", "REST API", "Database", "Docker", "GH Actions"],
     },
     {
       name: "Playwright Practice",
       description:
-      "GitHub repo for practicing Playwright end-to-end UI testing on a virtual bank demo site.",
+      "Practiced e2e browswer automation on a virtual bank demo site.",
       link: "https://github.com/JontAmazon/playwright-practice",
       skills: ["JavaScript", "Playwright", "Automated Web Testing"],
     },
