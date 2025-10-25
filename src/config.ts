@@ -19,12 +19,12 @@ export const siteConfig = {
   ],
   skills: [],
   projectHeaders: [
-    "Summer/Fall 2025",
+    "Learning Project Summer & Fall 2025",
     "Fun Previous Projects",
   ],
   projects_2025: [
     {
-      name: "Full Stack To-Do App (WIP)",
+      name: "To-Do App (WIP)",
       description:
       "A desktop browser to-do/note editor built with Next.js, " +
       "featuring JWT client-side authentication and a managed PostgreSQL database." +
@@ -61,18 +61,30 @@ export const siteConfig = {
       ],
     },
     {
+      name: "Playwright Practice",
+      description:
+      "End-to-end browser automation on a virtual bank demo webapp.",
+      link: "https://github.com/JontAmazon/playwright-practice",
+      skills: ["JavaScript", "Playwright"],
+      testResults: {
+        enabled: true,
+        title: "Test Results 7 Days (Automated Tests)",
+        github: {
+          owner: "JontAmazon",
+          repo: "playwright-practice",
+          branch: "results3",
+          path: "test-results-history",
+          days: 7,
+          linkStyle: "blob",
+        },
+      },
+    },
+    {
       name: "WhatsApp Weather Bot",
       description:
       "A WhatsApp weather bot that sends daily weather updates to all subscribers.",
       link: "https://weather-whatsapp-bot.fly.dev/",
       skills: ["Python", "REST API", "Database", "Docker", "GH Actions"],
-    },
-    {
-      name: "Playwright Practice",
-      description:
-      "Practiced e2e browswer automation on a virtual bank demo site.",
-      link: "https://github.com/JontAmazon/playwright-practice",
-      skills: ["JavaScript", "Playwright", "Automated Web Testing"],
     },
     {
       name: "Apple Dash",

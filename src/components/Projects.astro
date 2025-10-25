@@ -1,5 +1,6 @@
 ---
 import { siteConfig } from "../config";
+import TestResultsGraph from "./TestResultsGraph.astro";
 const current = siteConfig.projects_2025 ?? [];
 const previous = siteConfig.previous_projects ?? [];
 const hasProjects = (current && current.length > 0) || (previous && previous.length > 0);
@@ -95,6 +96,15 @@ const headers = siteConfig.projectHeaders ?? ["Section 1", "Section 2"];
                                 {skill}
                               </span>
                             ))}
+                          </div>
+                        )}
+
+                        {project.testResults && project.testResults.github && project.testResults.enabled !== false && (
+                          <div class="pt-3">
+                            <TestResultsGraph
+                              title={project.testResults.title || "Recent Test Results"}
+                              github={project.testResults.github}
+                            />
                           </div>
                         )}
                       </div>
