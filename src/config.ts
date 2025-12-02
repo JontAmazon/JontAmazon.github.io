@@ -19,8 +19,9 @@ export const siteConfig = {
   ],
   skills: [],
   projectHeaders: [
-    "Learning Project Summer & Fall 2025",
+    "Learning Projects Summer & Fall 2025",
     "Fun Previous Projects",
+    "University",
   ],
   projects_2025: [
     {
@@ -108,6 +109,8 @@ export const siteConfig = {
       link: "https://yatzy-solver.fly.dev/",
       skills: ["Python"],
     },
+  ],
+  university_projects: [
     {
       name: "Master's Thesis Popular Summary",
       description:
