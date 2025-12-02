@@ -1,0 +1,46 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import "../styles/global.css";
+---
+
+<html><head><meta charset="utf-8" /></head></html>
+<Header />
+<main class="mt-32 px-4 max-w-3xl mx-auto space-y-6 pb-16">
+    <h1 class="text-3xl font-bold mb-4">University &mdash; Favorite Courses</h1>
+    <p>Throughout my 5 years in uni, I completed <u>many</u> math, physics, and programming courses. But the courses/topics I found most interesting were:</p>
+    
+    <h2 class="text-2xl font-bold mb-4">Programming in Java, C, and Python</h2>
+    <p>I first discovered programming taking two courses in Java, and I absolutely loved it. We learned concepts like OOP, data structures, algorithms, and recursion. The projects were incredibly fun, including solving sudoku, fractals, bank app, "turtle race", and game of life. Afterwards I coded <a href="/acceleration-ball" class="text-blue-600 underline">Acceleration Ball</a> in Java, a 2D game with rich visuals and fun game mechanics.</p>
+    <p>In many courses, we used <b>Python</b> to solve mathematical problems. Always fun!</p>
+    <p>I also took one course in <b>C</b>. While I prefer Python, it was fun to learn C as well.</p>
+
+    <h2 class="text-2xl font-bold mb-4">Solving PDEs with numerical methods</h2>
+    <b>General algorithm:</b>
+    <ol class="list-decimal list-inside space-y-1">
+        <li>Discretize the geometry/domain.</li>
+        <li>Approximate derivatives (1st and 2nd order).</li>
+        <li>Apply boundary and initial conditions on the grid.</li>
+        <li>Step forward in time (if time-dependent), or solve a large system of equations (if steady-state).</li>
+    </ol>
+    <b>Methods:</b>
+    <ul class="list-disc list-inside space-y-1">
+        <li>Time-stepping schemes: Euler, Runge-Kutta, multistep methods (Adams), BDF methods.</li>
+        <li>Static spatial methods: Finite Difference / Finite Element Methods (FDM/FEM).</li>
+        <li>Root-finding methods: Newton, Secant. (Nonlinear solvers are needed for implicit methods).</li>
+        <li>Theoretical concepts: Explicit vs. implicit methods, convergence, order of accuracy, etc.</li>
+    </ul>
+    
+    <h2 class="text-2xl font-bold mb-4">Numerical methods for optimizing mathematical functions</h2>
+    <b>Methods:</b>
+    <ul class="list-disc list-inside space-y-1">
+        <li>Gradient descent</li>
+        <li>Least squares (context: fitting a function to data)</li>
+        <li>Newton's method, often combined with line search for stable, adaptive step sizes</li>
+        <li>Handling constraints with barrier/penalty functions</li>
+    </ul>
+    
+    <!-- EVEV TODO: add image of heat exchanger stress analysis (FEM) -->
+    
+</main>
+<Footer />

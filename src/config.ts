@@ -118,6 +118,13 @@ export const siteConfig = {
       link: "/masters-thesis",
       skills: ["Python", "Deep Learning", "TensorFlow"],
     },
+    {
+      name: "Favorite Courses",
+      description: "Highlights from my favorite university courses.",
+      link: "/uni-favorite-courses",
+      skills: ["Programming", "Java", "C", "Python", "Numerical methods", "Optimization", "Mathematics"]
+
+    },
   ],
   // memes: [] ... maybe? ;)
   // experience: ...
