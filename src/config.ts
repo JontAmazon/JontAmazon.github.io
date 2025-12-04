@@ -25,6 +25,53 @@ export const siteConfig = {
   ],
   projects_2025: [
     {
+      name: "UI Automation for Banking App (Playwright)",
+      description:
+      "Playwright test suite validating registration, login, accounts, and transfers. Utilizing fixtures for setup/teardown.",
+      link: "https://github.com/JontAmazon/playwright-practice",
+      skills: ["JavaScript", "Playwright"],
+      testResults: {
+        enabled: true,
+        title: "Test Results 7 Days (Automated Tests)",
+        github: {
+          owner: "JontAmazon",
+          repo: "playwright-practice",
+          branch: "results3",
+          path: "test-results-history",
+          days: 7,
+          linkStyle: "blob",
+        },
+      },
+    },
+    {
+      name: "UI Automation for Online Clothing Store (Playwright)",
+      description:
+      "Playwright test suite validating user registration, login, and logout flows on automationexercise.com. Utilizing fixtures for setup/teardown.",
+      link: "https://github.com/JontAmazon/ui-automation",
+      skills: ["JavaScript", "Playwright"],
+    },
+    {
+      name: "REST API testing",
+      description:
+      "A pytest-based REST API test suite for GoRest, covering CRED operations, schema validation, and automated HTML reporting.",
+      link: "https://github.com/JontAmazon/rest-api-tests",
+      skills: ["Python", "pytest"],
+    },
+    {
+      name: "WhatsApp Weather Bot",
+      description:
+      "A WhatsApp weather bot that sends daily weather updates to all subscribers.",
+      link: "https://weather-whatsapp-bot.fly.dev/",
+      skills: ["Python", "REST API", "Database", "Docker", "GH Actions"],
+    },
+    {
+      name: "Apple Dash",
+      description:
+      "Simple web game with a Node.js backend and SQLite highscore database.",
+      link: "https://apple-dash.fly.dev/",
+      skills: ["JavaScript", "Node.js", "Express", "REST API", "Database"],
+    },
+    {
       name: "To-Do App (WIP)",
       description:
       "A desktop browser to-do/note editor built with Next.js, " +
@@ -51,48 +98,14 @@ export const siteConfig = {
       skills: [
         "TypeScript", 
         "Next.js", 
-        "Auth", // "Authentication (NextAuth)", 
-        "PostgreSQL", // Neon - managed DB
+        "Auth", // "(NextAuth)", 
+        "PostgreSQL", // (Neon - managed DB; Prisma ORM)
         "React", 
         "Playwright",
-        // "CI/CD",
-        // PostgreSQL (Prisma ORM)
-        // "Fly.io"
+        // "CI/CD - unit, API, and Playwright tests,",
+        // "Fly.io", 
         // "Tailwind CSS", 
       ],
-    },
-    {
-      name: "Playwright Practice",
-      description:
-      "End-to-end browser automation on a virtual bank demo webapp.",
-      link: "https://github.com/JontAmazon/playwright-practice",
-      skills: ["JavaScript", "Playwright"],
-      testResults: {
-        enabled: true,
-        title: "Test Results 7 Days (Automated Tests)",
-        github: {
-          owner: "JontAmazon",
-          repo: "playwright-practice",
-          branch: "results3",
-          path: "test-results-history",
-          days: 7,
-          linkStyle: "blob",
-        },
-      },
-    },
-    {
-      name: "WhatsApp Weather Bot",
-      description:
-      "A WhatsApp weather bot that sends daily weather updates to all subscribers.",
-      link: "https://weather-whatsapp-bot.fly.dev/",
-      skills: ["Python", "REST API", "Database", "Docker", "GH Actions"],
-    },
-    {
-      name: "Apple Dash",
-      description:
-      "Simple web game with a Node.js backend and SQLite highscore database.",
-      link: "https://apple-dash.fly.dev/",
-      skills: ["JavaScript", "Node.js", "Express", "REST API", "Database"],
     },
   ],
   previous_projects: [

@@ -165,6 +165,7 @@ const {
     async function loadFromGitHub() {
       const { owner, repo, branch, path, days = 7, linkStyle = 'blob' } = githubCfg || {};
       if (!owner || !repo || !branch || !path) throw new Error('Missing config');
+      // Start by listing files in the results branch.
       const listUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${encPath(path)}?ref=${encodeURIComponent(branch)}`;
       const items = await fetchJson(listUrl);
       if (!Array.isArray(items)) throw new Error('Unexpected listing response');
@@ -211,6 +212,7 @@ const {
         if (!existing || f.name > existing.name) byDate.set(key, f);
       }
 
+      // Date keys, sorted
       const allKeys = Array.from(byDate.keys()).sort((a,b) => a.localeCompare(b));
       const limitedKeys = typeof days === 'number' && days > 0 ? allKeys.slice(-days) : allKeys;
 
@@ -218,8 +220,10 @@ const {
       for (const key of limitedKeys) {
         const f = byDate.get(key);
         let text = null, json = null;
-        try { ({ text, json } = await fetchViaApiRaw(f.name)); } catch {}
+        try { ({ text, json } = await fetchViaApiRaw(f.name)); } catch {} // try via API raw
         if (!text) {
+          // fallback: try via content API
+          console.log('!text -> using fallback to fetch results');
           try {
             const url = `https://api.github.com/repos/${owner}/${repo}/contents/${encPath(path)}/${encodeURIComponent(f.name)}?ref=${encodeURIComponent(branch)}`;
             const details = await fetchJson(url);
@@ -227,19 +231,21 @@ const {
               text = decodeBase64ToTextSmart(details.content || '');
               try { json = JSON.parse(text); }
               catch { try { json = JSON.parse((text || '').replace(/\u0000/g, '')); } catch { json = null; } }
-            }
+              }
             if (!text && details && details.download_url) {
               const r = await fetch(details.download_url, { mode: 'cors' });
               if (r.ok) {
                 const buf2 = await r.arrayBuffer();
                 text = decodeBufferSmart(buf2);
+                }
+                try { json = JSON.parse(text || ''); }
+                catch { try { json = JSON.parse((text || '').replace(/\u0000/g, '')); } catch { json = null; } }
+                }
+                } catch {}
               }
-              try { json = JSON.parse(text || ''); }
-              catch { try { json = JSON.parse((text || '').replace(/\u0000/g, '')); } catch { json = null; } }
-            }
-          } catch {}
-        }
         if (!text && f.download_url) {
+          // fallback: try via direct download URL
+          console.log('!text && f.download_url -> using fallback #2 to download_url');
           try {
             const r = await fetch(f.download_url, { mode: 'cors' });
             if (r.ok) {
