@@ -42,7 +42,7 @@ export const siteConfig = {
       name: "E2E testing of (flaky) Demo Banking App",
       description:
       "Playwright test suite validating registration, login, accounts, and transfers. Utilizing fixtures for setup/teardown" +
-      "\n\t**Note:** The demo banking app is **intentionally flaky**, so tests results are frequently red.",
+      "\n\t**Note:** The demo banking app is **intentionally flaky**, so failed tests is normal.",
       link: "https://github.com/JontAmazon/playwright-practice",
       skills: ["JavaScript", "Playwright"],
       testResults: {
