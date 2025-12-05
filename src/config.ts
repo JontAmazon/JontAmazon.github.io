@@ -14,7 +14,7 @@ export const siteConfig = {
     // "I enjoy working with Python, and have recently been learning a lot of JavaScript and Playwright.+
     // "I like writing and I love structure. "+
     // "I get excited about clean code, smart tests, and organizing messy systems.",
-
+    
     "Based in Lund, Sweden. Currently exploring new projects and opportunities."
   ],
   skills: [],
@@ -25,7 +25,14 @@ export const siteConfig = {
   ],
   projects_2025: [
     {
-      name: "UI Automation for Banking App (Playwright)",
+      name: "REST API testing",
+      description:
+      "A pytest-based REST API test suite for GoRest, covering CRED operations, schema validation, and automated HTML reporting.",
+      link: "https://github.com/JontAmazon/rest-api-tests",
+      skills: ["Python", "pytest"],
+    },
+    {
+      name: "E2E testing of Banking App (Playwright)",
       description:
       "Playwright test suite validating registration, login, accounts, and transfers. Utilizing fixtures for setup/teardown.",
       link: "https://github.com/JontAmazon/playwright-practice",
@@ -52,11 +59,40 @@ export const siteConfig = {
       skills: ["JavaScript", "Playwright"],
     },
     {
-      name: "REST API testing",
+      name: "To-Do App (WIP)",
       description:
-      "A pytest-based REST API test suite for GoRest, covering CRED operations, schema validation, and automated HTML reporting.",
-      link: "https://github.com/JontAmazon/rest-api-tests",
-      skills: ["Python", "pytest"],
+      "A desktop browser to-do/note editor built with Next.js, " +
+      "featuring JWT client-side authentication and a managed PostgreSQL database." +
+      "\nDesigned to be a personal productivity tool and full-stack learning project." +
+      "\nExtra focus on testing (unit, api, e2e) with Vitest and Playwright, and CI/CD.",
+      /*
+      --- More features planned ---
+      - fine-tuned editor:
+      - automatic (??) UI for verbose tasks (collapsible text blocks)
+      - several text formatting options
+      - "- " creates a new list item?
+      - history 
+      - auto-save
+      - keyboard shortcuts for power users:
+        - collapse/expand note, etc.
+      
+        --- EV add background ---
+      - I found that other note apps missed collapsible features.
+        - (maybe note app X also has this)
+
+      */
+     // link: "",
+     skills: [
+        "TypeScript", 
+        "Next.js", 
+        "Auth", // "(NextAuth)", 
+        "PostgreSQL", // (Neon - managed DB; Prisma ORM)
+        "React", 
+        "Playwright",
+        // "CI/CD - unit, API, and Playwright tests,",
+        // "Fly.io", 
+        // "Tailwind CSS", 
+      ],
     },
     {
       name: "WhatsApp Weather Bot",
@@ -71,42 +107,6 @@ export const siteConfig = {
       "Simple web game with a Node.js backend and SQLite highscore database.",
       link: "https://apple-dash.fly.dev/",
       skills: ["JavaScript", "Node.js", "Express", "REST API", "Database"],
-    },
-    {
-      name: "To-Do App (WIP)",
-      description:
-      "A desktop browser to-do/note editor built with Next.js, " +
-      "featuring JWT client-side authentication and a managed PostgreSQL database." +
-      "\nDesigned to be a personal productivity tool and full-stack learning project." +
-      "\nExtra focus on testing (unit, api, e2e) with Vitest and Playwright, and CI/CD.",
-      /*
-      --- More features planned ---
-      - fine-tuned editor:
-        - automatic (??) UI for verbose tasks (collapsible text blocks)
-        - several text formatting options
-        - "- " creates a new list item?
-      - history 
-      - auto-save
-      - keyboard shortcuts for power users:
-        - collapse/expand note, etc.
-      
-        --- EV add background ---
-      - I found that other note apps missed collapsible features.
-        - (maybe note app X also has this)
-
-      */
-      // link: "",
-      skills: [
-        "TypeScript", 
-        "Next.js", 
-        "Auth", // "(NextAuth)", 
-        "PostgreSQL", // (Neon - managed DB; Prisma ORM)
-        "React", 
-        "Playwright",
-        // "CI/CD - unit, API, and Playwright tests,",
-        // "Fly.io", 
-        // "Tailwind CSS", 
-      ],
     },
   ],
   previous_projects: [
