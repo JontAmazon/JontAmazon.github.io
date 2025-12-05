@@ -18,13 +18,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      RESULTS_OWNER: ${{ secrets.RESULTS_OWNER }}
-      RESULTS_REPO: ${{ secrets.RESULTS_REPO }}
-      RESULTS_BRANCH: ${{ secrets.RESULTS_BRANCH }}
-      RESULTS_PATH: ${{ secrets.RESULTS_PATH }}
-      RESULTS_DAYS: 7
-      RESULTS_LINK_STYLE: blob
-      # PAT with repo contents:read on the target repo.
       RESULTS_TOKEN: ${{ secrets.RESULTS_TOKEN }}
     steps:
       - uses: actions/checkout@v4

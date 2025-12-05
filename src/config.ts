@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Jonatan Lindholm",
   title: "Software Engineer/Tester",
-  description: "Simple portfolio website of Jonatan Lindholm",
+  description: "Portfolio website of Jonatan Lindholm",
   accentColor: "#1d4ed8",
   social: {
     // skipped email
@@ -37,9 +37,22 @@ export const siteConfig = {
       "Playwright test suite validating user registration, login, and logout flows on automationexercise.com. Utilizing fixtures for setup/teardown.",
       link: "https://github.com/JontAmazon/ui-automation",
       skills: ["JavaScript", "Playwright"],
+      testResults: {
+        enabled: true,
+        title: "Automated Test Results 7 Days",
+        github: {
+          owner: "JontAmazon",
+          repo: "ui-automation",
+          branch: "results",
+          path: "test-results-history",
+          dataUrl: "/data/clothing/test-results.json",
+          days: 7,
+          linkStyle: "blob",
+        },
+      },
     },
     {
-      name: "E2E testing of (flaky) Demo Banking App",
+      name: "E2E testing of Demo Banking App",
       description:
       "Playwright test suite validating registration, login, accounts, and transfers. Utilizing fixtures for setup/teardown" +
       "\n\t**Note:** The demo banking app is **intentionally flaky**, so failed tests is normal.",
@@ -53,7 +66,7 @@ export const siteConfig = {
           repo: "playwright-practice",
           branch: "results3",
           path: "test-results-history",
-          dataUrl: "/data/test-results.json",
+          dataUrl: "/data/parabank/test-results.json",
           days: 7,
           linkStyle: "blob",
         },

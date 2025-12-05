@@ -19,33 +19,52 @@ if (fs.existsSync(envFile)) {
   }
 }
 
-// Support both RESULTS_* (preferred) and legacy GITHUB_* env names
-const env = process.env;
-const OWNER = env.RESULTS_OWNER;
-const REPO = env.RESULTS_REPO;
-const BRANCH = env.RESULTS_BRANCH;
-const RESULTS_PATH = env.RESULTS_PATH;
-const RESULTS_DAYS = env.RESULTS_DAYS || "7";
-const RESULTS_LINK_STYLE = env.RESULTS_LINK_STYLE || "blob";
-const TOKEN = env.RESULTS_TOKEN; // GitHub Personal Access Token
+const TOKEN = process.env.RESULTS_TOKEN; // GitHub Personal Access Token
 
-const missing = [
-  ["RESULTS_OWNER", OWNER],
-  ["RESULTS_REPO", REPO],
-  ["RESULTS_BRANCH", BRANCH],
-  ["RESULTS_PATH", RESULTS_PATH],
-  ["RESULTS_TOKEN", TOKEN],
-].filter(([, val]) => !val);
-
-if (missing.length) {
-  const names = missing.map(([name]) => name).join(", ");
-  console.error(`Missing required env vars: ${names}`);
+if (!TOKEN) {
+  console.error("Missing required env var: RESULTS_TOKEN");
   process.exit(1);
 }
 
-const daysLimit = Number.parseInt(RESULTS_DAYS, 10);
-const linkStyle = RESULTS_LINK_STYLE === "raw" ? "raw" : "blob";
-const outputFile = path.join(process.cwd(), "public", "data", "test-results.json");
+function loadSiteConfig() {
+  const configPath = path.join(process.cwd(), "src", "config.ts");
+  if (!fs.existsSync(configPath)) throw new Error("Unable to find src/config.ts");
+  const raw = fs.readFileSync(configPath, "utf8");
+  const match = raw.match(/export\s+const\s+siteConfig\s*=\s*({[\s\S]*?});?\s*$/);
+  if (!match) throw new Error("Unable to parse siteConfig from src/config.ts");
+  try {
+    const code = match[1];
+    return new Function(`return (${code});`)();
+  } catch (err) {
+    throw new Error(`Failed to evaluate siteConfig: ${err.message}`);
+  }
+}
+
+function extractTestProjects(siteConfig) {
+  const collections = Object.values(siteConfig).filter(Array.isArray);
+  const projects = [];
+  for (const group of collections) {
+    for (const item of group) {
+      const tr = item?.testResults;
+      const gh = tr?.github;
+      if (tr && gh && tr.enabled !== false) {
+        projects.push({
+          name: item?.name || "Unnamed Project",
+          github: {
+            owner: gh.owner,
+            repo: gh.repo,
+            branch: gh.branch,
+            path: gh.path,
+            dataUrl: gh.dataUrl || tr.dataUrl,
+            days: gh.days,
+            linkStyle: gh.linkStyle,
+          },
+        });
+      }
+    }
+  }
+  return projects;
+}
 
 function headers(extra = {}) {
   return {
@@ -175,10 +194,42 @@ function fmtDayLabel(key) {
   return d.toLocaleDateString(undefined, opts);
 }
 
-async function fetchViaApiRaw(name) {
-  const url = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${encPath(RESULTS_PATH)}/${encodeURIComponent(
+function normalizeDays(days) {
+  const val = Number.parseInt(days ?? "7", 10);
+  return Number.isFinite(val) && val > 0 ? val : 7;
+}
+
+function normalizeLinkStyle(linkStyle) {
+  return linkStyle === "raw" ? "raw" : "blob";
+}
+
+function resolveOutputFile(dataUrl) {
+  const rel = (dataUrl || "").replace(/^\/+/, "");
+  if (!rel) throw new Error("Missing dataUrl for test results");
+  return path.join(process.cwd(), "public", rel);
+}
+
+function requireFields(obj, fields) {
+  const missing = fields.filter((f) => !obj[f]);
+  if (missing.length) throw new Error(`Missing required GitHub config fields: ${missing.join(", ")}`);
+}
+
+function buildGithubCtx(github) {
+  requireFields(github, ["owner", "repo", "branch", "path"]);
+  return {
+    owner: github.owner,
+    repo: github.repo,
+    branch: github.branch,
+    resultsPath: github.path,
+    daysLimit: normalizeDays(github.days),
+    linkStyle: normalizeLinkStyle(github.linkStyle),
+  };
+}
+
+async function fetchViaApiRaw(name, ctx) {
+  const url = `https://api.github.com/repos/${ctx.owner}/${ctx.repo}/contents/${encPath(ctx.resultsPath)}/${encodeURIComponent(
     name,
-  )}?ref=${encodeURIComponent(BRANCH)}`;
+  )}?ref=${encodeURIComponent(ctx.branch)}`;
   const res = await fetch(url, {
     headers: headers({ Accept: "application/vnd.github.v3.raw" }),
   });
@@ -196,14 +247,14 @@ async function fetchViaApiRaw(name) {
   return { text, json };
 }
 
-async function fetchFileWithFallback(name) {
+async function fetchFileWithFallback(name, ctx) {
   try {
-    return await fetchViaApiRaw(name);
+    return await fetchViaApiRaw(name, ctx);
   } catch {}
 
-  const url = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${encPath(RESULTS_PATH)}/${encodeURIComponent(
+  const url = `https://api.github.com/repos/${ctx.owner}/${ctx.repo}/contents/${encPath(ctx.resultsPath)}/${encodeURIComponent(
     name,
-  )}?ref=${encodeURIComponent(BRANCH)}`;
+  )}?ref=${encodeURIComponent(ctx.branch)}`;
   try {
     const details = await fetchJson(url);
     if (details && typeof details.content === "string" && details.encoding === "base64") {
@@ -239,10 +290,10 @@ async function fetchFileWithFallback(name) {
   throw new Error(`Unable to fetch ${name}`);
 }
 
-async function loadFromGitHub() {
-  const listUrl = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${encPath(
-    RESULTS_PATH,
-  )}?ref=${encodeURIComponent(BRANCH)}`;
+async function loadFromGitHub(ctx) {
+  const listUrl = `https://api.github.com/repos/${ctx.owner}/${ctx.repo}/contents/${encPath(
+    ctx.resultsPath,
+  )}?ref=${encodeURIComponent(ctx.branch)}`;
   const items = await fetchJson(listUrl);
   if (!Array.isArray(items)) throw new Error("Unexpected listing response");
 
@@ -259,7 +310,7 @@ async function loadFromGitHub() {
   }
 
   const allKeys = Array.from(byDate.keys()).sort((a, b) => a.localeCompare(b));
-  const limitedKeys = Number.isFinite(daysLimit) && daysLimit > 0 ? allKeys.slice(-daysLimit) : allKeys;
+  const limitedKeys = Number.isFinite(ctx.daysLimit) && ctx.daysLimit > 0 ? allKeys.slice(-ctx.daysLimit) : allKeys;
 
   const runs = [];
   for (const key of limitedKeys) {
@@ -270,7 +321,7 @@ async function loadFromGitHub() {
     let downloadUrl = f.download_url;
 
     try {
-      const res = await fetchFileWithFallback(f.name);
+      const res = await fetchFileWithFallback(f.name, ctx);
       text = res.text;
       json = res.json;
       downloadUrl = res.download_url || downloadUrl;
@@ -285,9 +336,9 @@ async function loadFromGitHub() {
     }
 
     const link =
-      linkStyle === "raw" && downloadUrl
+      ctx.linkStyle === "raw" && downloadUrl
         ? downloadUrl
-        : `https://github.com/${OWNER}/${REPO}/blob/${encodeURIComponent(BRANCH)}/${RESULTS_PATH}/${encodeURIComponent(
+        : `https://github.com/${ctx.owner}/${ctx.repo}/blob/${encodeURIComponent(ctx.branch)}/${ctx.resultsPath}/${encodeURIComponent(
             f.name,
           )}`;
 
@@ -298,25 +349,38 @@ async function loadFromGitHub() {
 }
 
 async function main() {
-  const { runs } = await loadFromGitHub();
-  if (!runs.length) throw new Error("No runs found to write");
+  const siteConfig = loadSiteConfig();
+  const projects = extractTestProjects(siteConfig);
+  if (!projects.length) {
+    console.log("No projects with testResults enabled; skipping fetch.");
+    return;
+  }
 
-  const payload = {
-    generatedAt: new Date().toISOString(),
-    source: {
-      owner: OWNER,
-      repo: REPO,
-      branch: BRANCH,
-      path: RESULTS_PATH,
-      days: daysLimit,
-      linkStyle,
-    },
-    runs,
-  };
+  for (const project of projects) {
+    const gh = project.github || {};
+    const outputFile = resolveOutputFile(gh.dataUrl);
+    const ctx = buildGithubCtx(gh);
+    const { runs } = await loadFromGitHub(ctx);
+    if (!runs.length) throw new Error(`No runs found to write for ${project.name}`);
 
-  fs.mkdirSync(path.dirname(outputFile), { recursive: true });
-  fs.writeFileSync(outputFile, JSON.stringify(payload, null, 2));
-  console.log(`Wrote ${runs.length} runs to ${path.relative(process.cwd(), outputFile)}`);
+    const payload = {
+      project: project.name,
+      generatedAt: new Date().toISOString(),
+      source: {
+        owner: ctx.owner,
+        repo: ctx.repo,
+        branch: ctx.branch,
+        path: ctx.resultsPath,
+        days: ctx.daysLimit,
+        linkStyle: ctx.linkStyle,
+      },
+      runs,
+    };
+
+    fs.mkdirSync(path.dirname(outputFile), { recursive: true });
+    fs.writeFileSync(outputFile, JSON.stringify(payload, null, 2));
+    console.log(`Wrote ${runs.length} runs for ${project.name} to ${path.relative(process.cwd(), outputFile)}`);
+  }
 }
 
 main().catch((err) => {
