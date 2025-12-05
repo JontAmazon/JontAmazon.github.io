@@ -6,6 +6,7 @@ interface GitHubContentsConfig {
   path: string;
   days?: number;
   linkStyle?: "blob" | "raw";
+  dataUrl?: string;
 }
 
 export interface Props {
@@ -162,6 +163,17 @@ const {
 
     function encPath(p) { return (p || '').split('/').map(encodeURIComponent).join('/'); }
 
+    async function loadFromStaticData() {
+      const url = githubCfg?.dataUrl;
+      if (!url) throw new Error('Missing dataUrl');
+      const r = await fetch(url, { mode: 'cors' });
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      const json = await r.json();
+      if (Array.isArray(json)) return json;
+      if (Array.isArray(json?.runs)) return json.runs;
+      throw new Error('Unexpected static data shape');
+    }
+
     async function loadFromGitHub() {
       const { owner, repo, branch, path, days = 7, linkStyle = 'blob' } = githubCfg || {};
       if (!owner || !repo || !branch || !path) throw new Error('Missing config');
@@ -296,8 +308,10 @@ const {
 
     (async () => {
       try {
-        statusEl.textContent = 'Fetching from GitHub…';
-        const data = await loadFromGitHub();
+        const usingStatic = !!githubCfg?.dataUrl;
+        console.log(usingStatic ? 'Test Results: fetched data pre-build' : 'Test Results: fetching from GitHub', githubCfg);
+        statusEl.textContent = usingStatic ? 'Loading results…' : 'Fetching from GitHub…';
+        const data = usingStatic ? await loadFromStaticData() : await loadFromGitHub();
         if (!data.length) {
           statusEl.textContent = 'No test results found.';
           return;

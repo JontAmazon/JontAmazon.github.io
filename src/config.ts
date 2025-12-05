@@ -38,6 +38,7 @@ export const siteConfig = {
           repo: "playwright-practice",
           branch: "results3",
           path: "test-results-history",
+          dataUrl: "/data/test-results.json",
           days: 7,
           linkStyle: "blob",
         },
