@@ -22,7 +22,7 @@ const {
 } = Astro.props as Props;
 ---
 
-<div class="mt-4">
+<div class="mt-4" data-trg-container>
   <div class="flex items-center justify-between">
     <h4 class="text-lg font-semibold text-gray-900">{title}</h4>
   </div>
@@ -52,6 +52,8 @@ const {
     const statusEl = root.querySelector('[data-trg-status]');
     const graphEl = root.querySelector('[data-trg-graph]');
     const accent = root.getAttribute('data-accent') || '#22c55e';
+    const NON_PASSING_STATUS_LIMIT = 1000; // large => always show graph
+    const container = root.closest('[data-trg-container]');
 
     /** @type {import('./TestResultsGraph.astro').Props["github"]} */
     const githubCfg = (() => {
@@ -113,22 +115,28 @@ const {
     }
 
     function summarizePlaywright(json) {
-      let passed = 0, failed = 0, skipped = 0;
+      let passed = 0, failed = 0, skipped = 0, timedOut = 0, errors = 0;
+
+      function bumpStatus(raw) {
+        const s = typeof raw === 'string' ? raw : '';
+        if (s === 'passed') { passed++; return; }
+        if (s === 'skipped' || s === 'pending') { skipped++; return; }
+        if (s === 'failed') { failed++; return; }
+        if (s === 'timedOut' || s === 'timeout') { timedOut++; return; }
+        if (!s) return;
+        failed++;
+        errors++;
+      }
+
       function countFromTestLike(test) {
         if (Array.isArray(test.results) && test.results.length) {
           for (const res of test.results) {
-            const s = res.status || test.status;
-            if (s === 'passed') passed++;
-            else if (s === 'failed') failed++;
-            else if (s === 'skipped') skipped++;
+            bumpStatus(res.status || test.status);
           }
           return true;
         }
         if (typeof test.status === 'string') {
-          const s = test.status;
-          if (s === 'passed') passed++;
-          else if (s === 'failed') failed++;
-          else if (s === 'skipped') skipped++;
+          bumpStatus(test.status);
           return true;
         }
         return false;
@@ -152,7 +160,7 @@ const {
       if (Array.isArray(json?.suites)) {
         for (const s of json.suites) walkSuite(s);
       }
-      return { passed, failed, skipped };
+      return { passed, failed, skipped, timedOut, errors };
     }
 
     function fmtDayLabel(key) {
@@ -210,9 +218,11 @@ const {
       function heuristicCount(text) {
         const count = (re) => ((text.match(re) || []).length);
         const passed = count(/\bstatus\"\s*:\s*\"passed\"/g) + count(/\boutcome\"\s*:\s*\"expected\"/g) + count(/\bok\"\s*:\s*true\b/g);
-        const failed = count(/\bstatus\"\s*:\s*\"failed\"/g) + count(/\boutcome\"\s*:\s*\"unexpected\"/g) + count(/\bok\"\s*:\s*false\b/g) + count(/\btimedout\"\s*:\s*true\b/g);
+        const failed = count(/\bstatus\"\s*:\s*\"failed\"/g) + count(/\boutcome\"\s*:\s*\"unexpected\"/g) + count(/\bok\"\s*:\s*false\b/g);
         const skipped = count(/\bstatus\"\s*:\s*\"skipped\"/g) + count(/\bskipped\"\s*:\s*true\b/g) + count(/\bpending\"\s*:\s*true\b/g);
-        return { passed, failed, skipped };
+        const timedOut = count(/\bstatus\"\s*:\s*\"timedOut\"/g) + count(/\btimedout\"\s*:\s*true\b/g);
+        const errors = 0;
+        return { passed, failed, skipped, timedOut, errors };
       }
 
       // Group by date and keep the latest run per day
@@ -271,7 +281,7 @@ const {
         if (!text) continue;
 
         let counts = json ? summarizePlaywright(json) : { passed: 0, failed: 0, skipped: 0 };
-        if ((counts.passed + counts.failed + counts.skipped) === 0) {
+        if ((counts.passed + counts.failed + counts.skipped + (counts.timedOut || 0)) === 0) {
           counts = heuristicCount((text || '').replace(/\u0000/g, ''));
         }
         const link = linkStyle === 'raw' && f.download_url ? f.download_url : `https://github.com/${owner}/${repo}/blob/${encodeURIComponent(branch)}/${path}/${encodeURIComponent(f.name)}`;
@@ -280,23 +290,32 @@ const {
       return runs;
     }
 
+    function failureCount(run) {
+      const failed = Number(run?.failed || 0);
+      const timedOut = Number(run?.timedOut || run?.timeout || 0);
+      const errors = Number(run?.errors || 0);
+      // return failed + timedOut + errors;
+      return failed + errors;
+    }
+
     function renderBars(data) {
       if (!graphEl) return;
-      const maxTotal = Math.max(1, ...data.map(d => d.passed + d.failed));
+      const maxTotal = Math.max(1, ...data.map(d => d.passed + failureCount(d)));
       const html = `
         <div class="flex gap-3 items-end overflow-x-auto pb-2">
           ${data.map(d => {
-            const total = d.passed + d.failed;
+            const failures = failureCount(d);
+            const total = d.passed + failures;
             const passPct = total ? (d.passed / maxTotal) * 100 : 0;
-            const failPct = total ? (d.failed / maxTotal) * 100 : 0;
+            const failPct = total ? (failures / maxTotal) * 100 : 0;
             return `
               <a href="${d.link}" target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center min-w-[36px]">
                 <div class="w-6 sm:w-7 md:w-8 h-32 bg-gray-100 border border-gray-200 rounded-md overflow-hidden flex flex-col-reverse">
                   <div title="${d.passed} passed" style="height:${passPct}%; background:${accent};" class="transition-all"></div>
-                  <div title="${d.failed} failed" style="height:${failPct}%; background:#ef4444;" class="transition-all"></div>
+                  <div title="${failures} failed" style="height:${failPct}%; background:#ef4444;" class="transition-all"></div>
                 </div>
                 <div class="mt-2 text-xs text-gray-600">${d.label}</div>
-                <div class="text-[10px] text-gray-500">${d.passed}✓ / ${d.failed}✗</div>
+                <div class="text-[10px] text-gray-500">${d.passed}✓ / ${failures}✗</div>
               </a>
             `;
           }).join('')}
@@ -316,6 +335,21 @@ const {
           statusEl.textContent = 'No test results found.';
           return;
         }
+
+        const totals = data.reduce((acc, run) => {
+          acc.failed += Number(run.failed || 0);
+          acc.skipped += Number(run.skipped || 0);
+          acc.timedOut += Number(run.timedOut || run.timeout || 0);
+          acc.errors += Number(run.errors || 0);
+          return acc;
+        }, { failed: 0, skipped: 0, timedOut: 0, errors: 0 });
+
+        const noisyStatuses = totals.failed + totals.skipped + totals.timedOut + totals.errors;
+        if (noisyStatuses > NON_PASSING_STATUS_LIMIT) {
+          if (container) container.remove();
+          return;
+        }
+
         statusEl.hidden = true;
         renderBars(data);
       } catch (e) {

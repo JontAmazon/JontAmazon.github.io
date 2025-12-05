@@ -12,6 +12,13 @@ const sections =
     { title: headers[2], projects: university },
   ].filter((section) => section.projects && section.projects.length > 0);
 const hasProjects = sections.length > 0;
+
+const formatDescription = (description: string = "") =>
+  description
+    .replace(/\t/g, "&emsp;")
+    .split(/\n+/)
+    .map((line) => line.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>"))
+    .join("<br />");
 ---
 
 {
@@ -89,8 +96,8 @@ const hasProjects = sections.length > 0;
 
                         <p
                           class={`text-base sm:text-lg text-gray-600 leading-relaxed ${project.link ? "pr-12 sm:pr-14 md:pr-16" : ""}`}
+                          set:html={formatDescription(project.description)}
                         >
-                          {project.description}
                         </p>
 
                         {project.skills && project.skills.length > 0 && (

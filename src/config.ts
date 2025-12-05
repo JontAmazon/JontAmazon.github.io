@@ -32,14 +32,22 @@ export const siteConfig = {
       skills: ["Python", "pytest"],
     },
     {
-      name: "E2E testing of Banking App (Playwright)",
+      name: "UI Automation for Online Clothing Store",
       description:
-      "Playwright test suite validating registration, login, accounts, and transfers. Utilizing fixtures for setup/teardown.",
+      "Playwright test suite validating user registration, login, and logout flows on automationexercise.com. Utilizing fixtures for setup/teardown.",
+      link: "https://github.com/JontAmazon/ui-automation",
+      skills: ["JavaScript", "Playwright"],
+    },
+    {
+      name: "E2E testing of (flaky) Demo Banking App",
+      description:
+      "Playwright test suite validating registration, login, accounts, and transfers. Utilizing fixtures for setup/teardown" +
+      "\n\t**Note:** The demo banking app is **intentionally flaky**, so tests results are frequently red.",
       link: "https://github.com/JontAmazon/playwright-practice",
       skills: ["JavaScript", "Playwright"],
       testResults: {
         enabled: true,
-        title: "Test Results 7 Days (Automated Tests)",
+        title: "Automated Test Results 7 Days",
         github: {
           owner: "JontAmazon",
           repo: "playwright-practice",
@@ -52,19 +60,12 @@ export const siteConfig = {
       },
     },
     {
-      name: "UI Automation for Online Clothing Store (Playwright)",
-      description:
-      "Playwright test suite validating user registration, login, and logout flows on automationexercise.com. Utilizing fixtures for setup/teardown.",
-      link: "https://github.com/JontAmazon/ui-automation",
-      skills: ["JavaScript", "Playwright"],
-    },
-    {
       name: "To-Do App (WIP)",
       description:
       "A desktop browser to-do/note editor built with Next.js, " +
-      "featuring JWT client-side authentication and a managed PostgreSQL database." +
-      "\nDesigned to be a personal productivity tool and full-stack learning project." +
-      "\nExtra focus on testing (unit, api, e2e) with Vitest and Playwright, and CI/CD.",
+      "featuring JWT client-side authentication and a managed PostgreSQL database. " +
+      "Designed to be a personal productivity tool and full-stack learning project." +
+      "\n\tExtra focus on testing with Vitest and Playwright (unit, api, e2e), as well as CI/CD.",
       /*
       --- More features planned ---
       - fine-tuned editor:
