@@ -1,15 +1,17 @@
 ---
 import { siteConfig } from "../config";
 import TestResultsGraph from "./TestResultsGraph.astro";
-const current = siteConfig.projects_2025 ?? [];
+const testing2025 = siteConfig.testing_projects_2025 ?? [];
+const fullStack2025 = siteConfig.full_stack_projects_2025 ?? [];
 const previous = siteConfig.previous_projects ?? [];
 const university = siteConfig.university_projects ?? [];
 const headers = siteConfig.projectHeaders ?? ["Section 1", "Section 2", "Section 3"];
 const sections =
   [
-    { title: headers[0], projects: current },
-    { title: headers[1], projects: previous },
-    { title: headers[2], projects: university },
+    { title: headers[0], projects: testing2025 },
+    { title: headers[1], projects: fullStack2025 },
+    { title: headers[2], projects: previous },
+    { title: headers[3], projects: university },
   ].filter((section) => section.projects && section.projects.length > 0);
 const hasProjects = sections.length > 0;
 

@@ -19,11 +19,12 @@ export const siteConfig = {
   ],
   skills: [],
   projectHeaders: [
-    "Learning Projects Summer & Fall 2025",
-    "Fun Previous Projects",
+    "Test & Automation Learning Projects (2025)",
+    "Full Stack Learning Projects (2025)",
+    "Previous Projects",
     "University",
   ],
-  projects_2025: [
+  testing_projects_2025: [
     {
       name: "REST API testing",
       description:
@@ -74,7 +75,9 @@ export const siteConfig = {
           linkStyle: "blob",
         },
       },
-    },
+    }
+  ],
+  full_stack_projects_2025: [
     {
       name: "To-Do App (WIP)",
       description:
@@ -141,7 +144,7 @@ export const siteConfig = {
       name: "Yatzy Simulation",
       description: "Heuristic-based algorithm for playing Yatzy.",
       link: "https://yatzy-solver.fly.dev/",
-      badge: { text: "Play" },
+      badge: { text: "View" },
       skills: ["Python"],
     },
   ],
