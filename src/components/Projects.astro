@@ -53,6 +53,30 @@ const formatDescription = (description: string = "") =>
                       rel: "noopener noreferrer",
                     }
                   : {};
+                const customIcon = project.icon ?? null;
+                const iconType = customIcon?.type;
+                const iconSrc = customIcon?.src;
+                const iconAlt = customIcon?.alt || `${project.name} link`;
+                const iconSize = customIcon?.size;
+                const customBadge = project.badge ?? null;
+                const badgeText = customBadge?.text || "";
+                const iconOffsetX = customIcon?.offsetX ?? (iconType === "youtube" ? -2 : 0);
+                const iconOffsetY = customIcon?.offsetY ?? (iconType === "youtube" ? -2 : 0);
+                const secondarySizeClasses = iconSize
+                  ? ""
+                  : iconType === "github"
+                    ? "w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12"
+                    : "w-12 h-12 sm:w-12 sm:h-12 md:w-14 md:h-14";
+                const secondarySizeStyle = iconSize
+                  ? { width: iconSize, height: iconSize }
+                  : undefined;
+                const secondaryOffsetStyle =
+                  iconOffsetX || iconOffsetY
+                    ? {
+                        marginLeft: typeof iconOffsetX === "number" ? `${iconOffsetX}px` : iconOffsetX,
+                        marginTop: typeof iconOffsetY === "number" ? `${iconOffsetY}px` : iconOffsetY,
+                      }
+                    : undefined;
 
                 return (
                   <div class="group relative">
@@ -65,20 +89,78 @@ const formatDescription = (description: string = "") =>
                       }`}
                     >
                       {project.link && (
-                        <div class="absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8 w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 flex items-center justify-center bg-gray-900 rounded-full text-white transition-all duration-300 group-hover:bg-gray-700">
-                          <svg
-                            class="w-4 h-4 sm:w-4.5 sm:h-4.5 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              d="M7 17L17 7M17 7H7M17 7V17"
-                            />
-                          </svg>
+                        <div class="absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8 flex gap-2">
+                          <div class="w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 flex items-center justify-center bg-gray-900 rounded-full text-white transition-all duration-300 group-hover:bg-gray-700">
+                            <svg
+                              class="w-4 h-4 sm:w-4.5 sm:h-4.5 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M7 17L17 7M17 7H7M17 7V17"
+                              />
+                            </svg>
+                          </div>
+
+                          {!customBadge && customIcon && (
+                            <div class="flex items-center justify-center" style={secondaryOffsetStyle}>
+                              {iconSrc ? (
+                                <img
+                                  src={iconSrc}
+                                  alt={iconAlt}
+                                  class={`object-contain transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 ${secondarySizeClasses}`}
+                                  style={secondarySizeStyle}
+                                />
+                              ) : iconType === "github" ? (
+                                <svg
+                                  class={`text-gray-900 transition-all duration-300 group-hover:text-gray-700 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 ${secondarySizeClasses}`}
+                                  style={secondarySizeStyle}
+                                  viewBox="0 0 24 24"
+                                  aria-hidden="true"
+                                  fill="currentColor"
+                                >
+                                  <path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.1.82-.27.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.35-1.77-1.35-1.77-1.1-.74.08-.73.08-.73 1.22.09 1.86 1.25 1.86 1.25 1.08 1.85 2.83 1.32 3.52 1.01.11-.8.42-1.32.76-1.63-2.67-.3-5.48-1.34-5.48-5.97 0-1.32.47-2.4 1.24-3.25-.12-.3-.54-1.53.12-3.18 0 0 1-.32 3.3 1.24a11.3 11.3 0 0 1 6 0c2.3-1.56 3.3-1.24 3.3-1.24.66 1.65.24 2.88.12 3.18.77.85 1.24 1.93 1.24 3.25 0 4.64-2.82 5.66-5.5 5.96.43.37.81 1.11.81 2.23v3.3c0 .32.22.69.82.58A12 12 0 0 0 12 .5Z" />
+                                </svg>
+                              ) : iconType === "youtube" ? (
+                                <svg
+                                  class={`transition-transform duration-300 transform -translate-x-0.5 -translate-y-0.5 group-hover:translate-x-0 group-hover:-translate-y-0 ${secondarySizeClasses}`}
+                                  style={secondarySizeStyle}
+                                  viewBox="0 0 24 24"
+                                  aria-hidden="true"
+                                  fill="#ff0000"
+                                >
+                                  <path d="M21.6 7.2a2.8 2.8 0 0 0-2-2c-1.8-.5-9.6-.5-11.3 0a2.8 2.8 0 0 0-2 2C6 9 6 12 6 12s0 3 0 4.8a2.8 2.8 0 0 0 2 2c1.7.5 9.5.5 11.3 0a2.8 2.8 0 0 0 2-2c.5-1.8.5-4.8.5-4.8s0-3-.5-4.8ZM10.6 15V9l4.8 3-4.8 3Z" />
+                                </svg>
+                              ) : (
+                                <svg
+                                  class={`transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 ${secondarySizeClasses}`}
+                                  style={secondarySizeStyle}
+                                  fill="none"
+                                  stroke="currentColor"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M7 17L17 7M17 7H7M17 7V17"
+                                  />
+                                </svg>
+                              )}
+                            </div>
+                          )}
+
+                          {customBadge && (
+                            <div class="flex items-center justify-center">
+                              <span class="px-3 py-2 bg-white/95 border border-gray-200 shadow-sm rounded-md text-[18px] font-semibold text-gray-900 uppercase tracking-tight whitespace-nowrap transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
+                                {badgeText}
+                              </span>
+                            </div>
+                          )}
                         </div>
                       )}
 

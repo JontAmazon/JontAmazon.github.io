@@ -29,6 +29,7 @@ export const siteConfig = {
       description:
       "A pytest-based REST API test suite for GoRest, covering CRED operations, schema validation, and automated HTML reporting.",
       link: "https://github.com/JontAmazon/rest-api-tests",
+      icon: { type: "github", offsetY: -2 },
       skills: ["Python", "pytest"],
     },
     {
@@ -36,6 +37,7 @@ export const siteConfig = {
       description:
       "Playwright test suite validating user registration, login, and logout flows on automationexercise.com. Utilizing fixtures for setup/teardown.",
       link: "https://github.com/JontAmazon/ui-automation",
+      icon: { type: "github", offsetY: -2 },
       skills: ["JavaScript", "Playwright"],
       testResults: {
         enabled: true,
@@ -54,13 +56,14 @@ export const siteConfig = {
     {
       name: "E2E testing of Demo Banking App",
       description:
-      "Playwright test suite validating registration, login, accounts, and transfers. Utilizing fixtures for setup/teardown" +
-      "\n\t**Note:** The demo banking app is **intentionally flaky**, so failed tests is normal.",
+      "Playwright test suite validating registration, login, accounts, and transfers. Utilizing fixtures for setup/teardown." +
+      "\n\tNote: The demo banking app is **intentionally flaky**, so failed tests is normal.",
       link: "https://github.com/JontAmazon/playwright-practice",
+      icon: { type: "github", offsetY: -2 },
       skills: ["JavaScript", "Playwright"],
       testResults: {
         enabled: true,
-        title: "Automated Test Results 7 Days",
+        title: "Automated Test Results 7 Days (Intentionally Flaky Demo App)",
         github: {
           owner: "JontAmazon",
           repo: "playwright-practice",
@@ -113,6 +116,7 @@ export const siteConfig = {
       description:
       "A WhatsApp weather bot that sends daily weather updates to all subscribers.",
       link: "https://weather-whatsapp-bot.fly.dev/",
+      badge: { text: "Sign Up" },
       skills: ["Python", "REST API", "Database", "Docker", "GH Actions"],
     },
     {
@@ -120,6 +124,7 @@ export const siteConfig = {
       description:
       "Simple web game with a Node.js backend and SQLite highscore database.",
       link: "https://apple-dash.fly.dev/",
+      badge: { text: "Play" },
       skills: ["JavaScript", "Node.js", "Express", "REST API", "Database"],
     },
   ],
@@ -129,12 +134,14 @@ export const siteConfig = {
       description:
       "A fast-paced 2D game where you collect apples while avoiding monsters and emerging magma.",
       link: "/acceleration-ball",
+      icon: { type: "youtube", size: "70px", offsetX: -5, offsetY: -10 },
       skills: ["Java", "OOP", "Game Loop & Animation"],
     },
     {
       name: "Yatzy Simulation",
       description: "Heuristic-based algorithm for playing Yatzy.",
       link: "https://yatzy-solver.fly.dev/",
+      badge: { text: "Play" },
       skills: ["Python"],
     },
   ],
@@ -142,14 +149,16 @@ export const siteConfig = {
     {
       name: "Master's Thesis Popular Summary",
       description:
-        "Deep learning models for clustering and classifying radar data.",
+      "Deep learning models for clustering and classifying radar data.",
       link: "/masters-thesis",
+      badge: { text: "Read" },
       skills: ["Python", "Deep Learning", "TensorFlow"],
     },
     {
       name: "Favorite Courses",
       description: "Highlights from my favorite university courses.",
       link: "/uni-favorite-courses",
+      badge: { text: "Read" },
       skills: ["Programming", "Java", "C", "Python", "Numerical methods", "Optimization", "Mathematics"]
 
     },
