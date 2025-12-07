@@ -4,6 +4,9 @@ on:
   push:
     branches: [ master ]
   workflow_dispatch:
+  # Daily rebuild, since test results data is fetched during prebuild of site
+  schedule:
+    - cron: "0 5 * * *"
 
 permissions:
   contents: read
@@ -26,7 +29,7 @@ jobs:
           node-version: "20"
           cache: "npm"
       - run: npm ci
-      - name: Generate test results data
+      - name: Fetch Playwright test results data
         run: npm run prebuild
       - name: Build site
         run: npm run build
