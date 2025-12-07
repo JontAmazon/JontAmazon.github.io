@@ -109,7 +109,7 @@ const formatDescription = (description: string = "") =>
                           </div>
 
                           {!customBadge && customIcon && (
-                            <div class="flex items-center justify-center" style={secondaryOffsetStyle}>
+                            <div class="hidden sm:flex items-center justify-center" style={secondaryOffsetStyle}>
                               {iconSrc ? (
                                 <img
                                   src={iconSrc}
@@ -157,7 +157,7 @@ const formatDescription = (description: string = "") =>
                           )}
 
                           {customBadge && (
-                            <div class="flex items-center justify-center">
+                            <div class="hidden sm:flex items-center justify-center">
                               <span class="px-3 py-2 bg-white/95 border border-gray-200 shadow-sm rounded-md text-[18px] font-semibold text-gray-900 uppercase tracking-tight whitespace-nowrap transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
                                 {badgeText}
                               </span>
