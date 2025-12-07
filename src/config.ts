@@ -21,7 +21,7 @@ export const siteConfig = {
   projectHeaders: [
     "Test & Automation Learning Projects (2025)",
     "Full Stack Learning Projects (2025)",
-    "Previous Projects",
+    "Fun Projects",
     "University",
   ],
   testing_projects_2025: [
@@ -55,16 +55,15 @@ export const siteConfig = {
       },
     },
     {
-      name: "E2E testing of Demo Banking App",
+      name: "E2E testing of (Flaky) Demo Banking App",
       description:
-      "Playwright test suite validating registration, login, accounts, and transfers. Utilizing fixtures for setup/teardown." +
-      "\n\tNote: The demo banking app is **intentionally flaky**, so failed tests is normal.",
+      "Playwright test suite validating registration, login, accounts, and transfers. Utilizing fixtures for setup/teardown.",
       link: "https://github.com/JontAmazon/playwright-practice",
       icon: { type: "github", offsetY: -2 },
       skills: ["JavaScript", "Playwright"],
       testResults: {
         enabled: true,
-        title: "Automated Test Results 7 Days (Intentionally Flaky Demo App)",
+        title: "Automated Test Results 7 Days - <u>intentionally flaky</u> demo app; failed tests are normal",
         github: {
           owner: "JontAmazon",
           repo: "playwright-practice",

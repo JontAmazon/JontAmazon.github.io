@@ -22,19 +22,19 @@ const {
 } = Astro.props as Props;
 ---
 
-<div class="mt-4" data-trg-container>
+<div class="mt-3" data-trg-container>
   <div class="flex items-center justify-between">
-    <h4 class="text-lg font-semibold text-gray-900">{title}</h4>
+    <h4 class="text-lg font-semibold text-gray-900" set:html={title}></h4>
   </div>
 
   <div
-    class="mt-3 p-4 bg-white border border-gray-200 rounded-lg"
+    class="mt-2 p-3 bg-white rounded-lg"
     data-trg-root
     data-github={github ? JSON.stringify(github) : ""}
     data-accent={accentColor}
   >
     <div class="text-sm text-gray-500" data-trg-status>Loading results…</div>
-    <div class="mt-3" data-trg-graph hidden></div>
+    <div class="mt-2" data-trg-graph hidden></div>
   </div>
   <!-- // Legends
     <div class="mt-2 text-[11px] text-gray-500">Click a bar to open that run's JSON.</div>
@@ -306,7 +306,7 @@ const {
       if (!graphEl) return;
       const maxTotal = Math.max(1, ...data.map(d => (d.passed + (d.flaky || 0)) + failureCount(d)));
       const html = `
-        <div class="flex gap-3 items-end overflow-x-auto pb-2">
+        <div class="flex gap-2 items-end overflow-x-auto pb-1.5">
           ${data.map(d => {
             const failures = failureCount(d);
             const successes = d.passed + (d.flaky || 0);
@@ -314,13 +314,13 @@ const {
             const passPct = total ? (successes / maxTotal) * 100 : 0;
             const failPct = total ? (failures / maxTotal) * 100 : 0;
             return `
-              <a href="${d.link}" target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center min-w-[36px]">
-                <div class="w-6 sm:w-7 md:w-8 h-32 bg-gray-100 border border-gray-200 rounded-md overflow-hidden flex flex-col-reverse">
+              <a href="${d.link}" target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center gap-1.5 min-w-[30px]">
+                <div class="w-5 sm:w-6 md:w-7 h-28 bg-gray-100 border border-gray-200 rounded-md overflow-hidden flex flex-col-reverse">
                   <div title="${successes} passed${d.flaky ? ` (${d.flaky} flaky)` : ""}" style="height:${passPct}%; background:${accent};" class="transition-all"></div>
                   <div title="${failures} failed" style="height:${failPct}%; background:#ef4444;" class="transition-all"></div>
                 </div>
-                <div class="mt-2 text-xs text-gray-600">${d.label}</div>
-                <div class="text-[10px] text-gray-500">${successes}✓${d.flaky ? ` (${d.flaky} flaky)` : ""} / ${failures}✗</div>
+                <div class="text-[11px] leading-tight text-gray-600">${d.label}</div>
+                <div class="text-[10px] leading-tight text-gray-500">${successes}✓${d.flaky ? ` (${d.flaky} flaky)` : ""} / ${failures}✗</div>
               </a>
             `;
           }).join('')}
@@ -373,4 +373,3 @@ const {
     initAll();
   }
 </script>
-
