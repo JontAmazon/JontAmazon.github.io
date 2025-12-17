@@ -19,19 +19,40 @@ export const siteConfig = {
   ],
   skills: [],
   projectHeaders: [
-    "Test & Automation Learning Projects (2025)",
+    "Test Automation (2025-2026)",
     "Full Stack Learning Projects (2025)",
     "Fun Projects",
     "University",
   ],
   testing_projects_2025: [
     {
-      name: "REST API testing",
+      name: "API Testing",
       description:
-      "A pytest-based REST API test suite for GoRest, covering CRED operations, schema validation, and automated HTML reporting.",
-      link: "https://github.com/JontAmazon/rest-api-tests",
+      "Test suite for a REST API, covering CRED operations, filtering/search, auth, idempotency, cleanup, API contracts, and JSON schema validation.",
+      link: "https://github.com/JontAmazon/rest-api-test-suite",
       icon: { type: "github", offsetY: -2 },
       skills: ["Python", "pytest"],
+    },
+    {
+      name: "E2E testing of Demo Banking App",
+      description:
+      "Playwright test suite validating registration, login, accounts, and transfers. Utilizing fixtures for setup/teardown.",
+      link: "https://github.com/JontAmazon/playwright-practice",
+      icon: { type: "github", offsetY: -2 },
+      skills: ["JavaScript", "Playwright"],
+      testResults: {
+        enabled: false,
+        title: "Automated Test Results 7 Days (demo app is flaky <u>by design</u> - failed tests are normal)",
+        github: {
+          owner: "JontAmazon",
+          repo: "playwright-practice",
+          branch: "results3",
+          path: "test-results-history",
+          dataUrl: "/data/parabank/test-results.json",
+          days: 7,
+          linkStyle: "blob",
+        },
+      },
     },
     {
       name: "UI Automation for Online Clothing Store",
@@ -54,36 +75,15 @@ export const siteConfig = {
         },
       },
     },
-    {
-      name: "E2E testing of (Flaky) Demo Banking App",
-      description:
-      "Playwright test suite validating registration, login, accounts, and transfers. Utilizing fixtures for setup/teardown.",
-      link: "https://github.com/JontAmazon/playwright-practice",
-      icon: { type: "github", offsetY: -2 },
-      skills: ["JavaScript", "Playwright"],
-      testResults: {
-        enabled: true,
-        title: "Automated Test Results 7 Days - <u>intentionally flaky</u> demo app; failed tests are normal",
-        github: {
-          owner: "JontAmazon",
-          repo: "playwright-practice",
-          branch: "results3",
-          path: "test-results-history",
-          dataUrl: "/data/parabank/test-results.json",
-          days: 7,
-          linkStyle: "blob",
-        },
-      },
-    }
   ],
   full_stack_projects_2025: [
     {
       name: "To-Do App (WIP)",
       description:
       "A desktop browser to-do/note editor built with Next.js, " +
-      "featuring JWT client-side authentication and a managed PostgreSQL database. " +
-      "Designed to be a personal productivity tool and full-stack learning project." +
-      "\n\tExtra focus on testing with Vitest and Playwright (unit, api, e2e), as well as CI/CD.",
+      "featuring authentication with NextAuth (JWT) and a managed PostgreSQL database. " +
+      // "Designed to be a personal productivity tool and full-stack learning project." +
+      "\n\tExtra focus on testing with Vitest and Playwright (unit, api, e2e, CI/CD).",
       /*
       --- More features planned ---
       - fine-tuned editor:
@@ -118,7 +118,7 @@ export const siteConfig = {
       description:
       "A WhatsApp weather bot that sends daily weather updates to all subscribers.",
       link: "https://weather-whatsapp-bot.fly.dev/",
-      badge: { text: "Sign Up" },
+      badge: { text: "Subscribe" },
       skills: ["Python", "REST API", "Database", "Docker", "GH Actions"],
     },
     {
@@ -143,7 +143,7 @@ export const siteConfig = {
       name: "Yatzy Simulation",
       description: "Heuristic-based algorithm for playing Yatzy.",
       link: "https://yatzy-solver.fly.dev/",
-      badge: { text: "View" },
+      badge: { text: "View Simulation" },
       skills: ["Python"],
     },
   ],
