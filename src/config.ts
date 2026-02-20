@@ -121,6 +121,7 @@ export const siteConfig = {
       badge: { text: "Subscribe" },
       skills: ["Python", "REST API", "Database", "Docker", "GH Actions"],
     },
+    /*
     {
       name: "Apple Dash",
       description:
@@ -129,6 +130,7 @@ export const siteConfig = {
       badge: { text: "Play" },
       skills: ["JavaScript", "Node.js", "Express", "REST API", "Database"],
     },
+    */
   ],
   previous_projects: [
     {
